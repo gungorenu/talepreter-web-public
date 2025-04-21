@@ -1,0 +1,26 @@
+<h1>Playground</h1>
+<div>
+  <div>
+    Text test (they are identical):
+    <p [innerHTML]="sampleClean"></p>
+    <p [innerHTML]="sampleFormatted"></p>
+  </div>
+
+  <div class="testView">
+    <app-expander [shift]="true">
+      <span ex_header>Inventory</span>
+      <app-expander [shift]="false" ex_content>
+        <span ex_header>Equipped</span>
+        <span ex_content>Equipped stuff</span>
+      </app-expander>
+      <app-expander [shift]="true" ex_content>
+        <span ex_header>Backpack</span>
+        <span ex_content>Backpack stuff</span>
+      </app-expander>
+      <app-expander [shift]="true" ex_content>
+        <span ex_header>Stash</span>
+        <span ex_content>Stash stuff</span>
+      </app-expander>
+    </app-expander>
+  </div>
+</div>

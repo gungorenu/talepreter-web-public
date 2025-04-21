@@ -1,0 +1,668 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --bg-color: #121212;
+  --text-color: #666666;
+  --button-color: #c0c0c0;
+  --monospace: "Consolas";
+  --border-color: #808080;
+
+  --color-1: #c5d8e1;
+  --color-2: #3885d2;
+  --color-3: #0c819c;
+  --color-4: #a58326;
+  --color-5: #54927caf;
+  --color-6: #8090f0a0;
+  --color-7: #227722;
+  --color-8: #b64540;
+  --color-9: #c97c16;
+  --hover-over-color: #333333;
+
+  --color-hh-1-border: #c97c16;
+}
+
+@keyframes hover_1 {
+  0% {
+    color: var(--color-1);
+  }
+  100% {
+    color: var(--hover-over-color);
+  }
+}
+@keyframes hover_2 {
+  0% {
+    color: var(--color-2);
+  }
+  100% {
+    color: var(--hover-over-color);
+  }
+}
+@keyframes hover_3 {
+  0% {
+    color: var(--color-3);
+  }
+  100% {
+    color: var(--hover-over-color);
+  }
+}
+@keyframes hover_4 {
+  0% {
+    color: var(--color-4);
+  }
+  100% {
+    color: var(--hover-over-color);
+  }
+}
+@keyframes hover_5 {
+  0% {
+    color: var(--color-5);
+  }
+  100% {
+    color: var(--hover-over-color);
+  }
+}
+@keyframes hover_6 {
+  0% {
+    color: var(--color-6);
+  }
+  100% {
+    color: var(--hover-over-color);
+  }
+}
+@keyframes hover_7 {
+  0% {
+    color: var(--color-7);
+  }
+  100% {
+    color: var(--hover-over-color);
+  }
+}
+@keyframes hover_8 {
+  0% {
+    color: var(--color-8);
+  }
+  100% {
+    color: var(--hover-over-color);
+  }
+}
+@keyframes hover_9 {
+  0% {
+    color: var(--color-9);
+  }
+  100% {
+    color: var(--hover-over-color);
+  }
+}
+
+html,
+body {
+  color: var(--text-color);
+  font-size: 16px;
+  background: var(--bg-color);
+  line-height: 29px;
+  margin: 3px;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Consolas", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+span.CF0,
+span.CF1,
+span.CF2,
+span.CF3,
+span.CF4,
+span.CF5,
+span.CF6,
+span.CF7,
+span.CF8,
+span.CF9 {
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  cursor: pointer;
+}
+
+span.CF0 {
+  color: var(--text-color);
+}
+span.CF1 {
+  color: var(--color-1);
+}
+span.CF2 {
+  color: var(--color-2);
+}
+span.CF3 {
+  color: var(--color-3);
+}
+span.CF4 {
+  color: var(--color-4);
+}
+span.CF5 {
+  color: var(--color-5);
+}
+span.CF6 {
+  color: var(--color-6);
+}
+span.CF7 {
+  color: var(--color-7);
+}
+span.CF8 {
+  color: var(--color-8);
+}
+span.CF9 {
+  color: var(--color-9);
+}
+
+span.CF1:hover {
+  animation-name: hover_1;
+}
+span.CF2:hover {
+  animation-name: hover_2;
+}
+span.CF3:hover {
+  animation-name: hover_3;
+}
+span.CF4:hover {
+  animation-name: hover_4;
+}
+span.CF5:hover {
+  animation-name: hover_5;
+}
+span.CF6:hover {
+  animation-name: hover_6;
+}
+span.CF7:hover {
+  animation-name: hover_7;
+}
+span.CF8:hover {
+  animation-name: hover_8;
+}
+span.CF9:hover {
+  animation-name: hover_9;
+}
+
+.hover-button {
+  margin: 4px 12px;
+  padding: 6px 12px;
+  border: solid 2px var(--border-color);
+  outline: none;
+  position: relative;
+  border-radius: 5px;
+  font-size: 16px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1;
+  color: var(--button-color);
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover:not([disabled]) {
+    background: linear-gradient(
+      to right,
+      #ffa600 0%,
+      #ff8700 10%,
+      #ff6a00 50%,
+      #ff8700 90%,
+      #ffa600 100%
+    );
+    border: none;
+    padding: 8px 14px;
+    color: var(--color-9);
+  }
+  &:disabled {
+    color: #3885d2;
+    background: #3885d2;
+    border: none;
+    padding: 8px 14px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background-color: var(--bg-color);
+    border-radius: 3px;
+    z-index: -1;
+  }
+
+  &:after {
+    content: attr(data);
+  }
+}
+
+.tab-button {
+  margin: 4px 2px;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  position: relative;
+  border-radius: 5px;
+  font-size: 16px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1;
+  color: var(--button-color);
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover:not([disabled]) {
+    background: linear-gradient(
+      to right,
+      #ffa600 0%,
+      #ff8700 10%,
+      #ff6a00 50%,
+      #ff8700 90%,
+      #ffa600 100%
+    );
+    border: none;
+    padding: 8px 14px;
+    color: var(--color-9);
+  }
+  &:disabled {
+    background: linear-gradient(
+      to right,
+      #ffa600 0%,
+      #ff8700 10%,
+      #ff6a00 50%,
+      #ff8700 90%,
+      #ffa600 100%
+    );
+    color: var(--color-9);
+    border: none;
+    padding: 8px 14px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background-color: var(--bg-color);
+    border-radius: 3px;
+    z-index: -1;
+  }
+
+  &:after {
+    content: attr(data);
+  }
+}
+
+.tab-button-active {
+  background: linear-gradient(
+    to right,
+    #ffa600 0%,
+    #ff8700 10%,
+    #ff6a00 50%,
+    #ff8700 90%,
+    #ffa600 100%
+  );
+  border: none;
+  padding: 8px 14px;
+  color: var(--color-9);
+}
+
+.tooltip {
+  position: relative;
+  cursor: help;
+  transition: all 0.2s ease-out;
+  border-bottom: solid 1px #3885d2;
+
+  &:hover {
+    box-shadow: 0 0 6px 0 var(--bg-color);
+  }
+  &:before,
+  &:after {
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    transition: all 0.2s ease-out;
+  }
+  &:before {
+    content: "";
+    margin-left: 32px;
+    top: 32px;
+  }
+  &:after {
+    content: attr(data-tooltip);
+    top: 32px;
+    width: max-content;
+    min-width: 60px;
+    max-width: 480px;
+    margin-left: 32px;
+    padding: 5px;
+    background-color: var(--bg-color);
+    border: solid 1px var(--border-color);
+    border-radius: 5px;
+    pointer-events: none;
+  }
+
+  &:hover:before,
+  &:hover:after {
+    opacity: 1;
+  }
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--text-color);
+}
+
+ul li {
+  color: var(--color-9);
+}
+
+ul li::marker {
+  font-size: 30px;
+}
+
+ul li:hover {
+  color: var(--color-2);
+}
+
+.loading {
+  color: var(--color-3);
+  font-style: italic;
+}
+
+span.list-item {
+  color: var(--text-color);
+  display: inline-block;
+  vertical-align: top;
+  line-height: inherit;
+  padding-top: 3px;
+}
+
+table.datagrid {
+  border-spacing: 0px;
+  width: 100%;
+  position: relative;
+
+  th {
+    color: var(--color-9);
+    border-bottom: solid 2px var(--color-9);
+    padding: 3px;
+    text-align: left;
+    position: sticky;
+    background-color: var(--bg-color);
+    top: 0;
+  }
+
+  td {
+    border-bottom: solid 1px var(--text-color);
+    padding: 3px;
+    height: 42px;
+  }
+}
+
+.inputCheckbox {
+  display: inline-block;
+  margin: 2px 6px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 26px;
+  padding-right: 14px;
+  border: none;
+  outline: none;
+  position: relative;
+  border-radius: 5px;
+  font-size: 16px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1;
+  color: var(--button-color);
+
+  &:hover:not([disabled]) {
+    background: linear-gradient(
+      to right,
+      #ffa600 0%,
+      #ff8700 10%,
+      #ff6a00 50%,
+      #ff8700 90%,
+      #ffa600 100%
+    );
+    border: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 26px;
+    padding-right: 14px;
+  }
+  &:disabled {
+    background: linear-gradient(
+      to right,
+      #ffa600 0%,
+      #ff8700 10%,
+      #ff6a00 50%,
+      #ff8700 90%,
+      #ffa600 100%
+    );
+    border: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 28px;
+    padding-right: 14px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background-color: var(--bg-color);
+    border-radius: 3px;
+    z-index: -1;
+  }
+
+  &:after {
+    content: attr(data);
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  input:checked ~ .checkmark {
+    background-color: transparent;
+  }
+
+  input:checked ~ .checkmark:after {
+    display: block;
+    left: 10px;
+    top: 10px;
+    width: 4px;
+    height: 8px;
+    border: solid #ff6a00;
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+.inputTextbox {
+  display: inline-block;
+  margin: 2px 6px;
+  padding: 2px;
+  border: solid 2px var(--border-color);
+  position: relative;
+  border-radius: 5px;
+  font-size: 16px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1;
+  color: var(--button-color);
+
+  &:hover:not(:has(input[disabled])) {
+    background: linear-gradient(
+      to right,
+      #ffa600 0%,
+      #ff8700 10%,
+      #ff6a00 50%,
+      #ff8700 90%,
+      #ffa600 100%
+    );
+    border: none;
+    padding: 4px;
+  }
+
+  &:has(input[disabled]) {
+    border: solid 2px var(--color-2);
+    padding: 2px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background-color: var(--bg-color);
+    border-radius: 3px;
+    z-index: -1;
+  }
+
+  &:after {
+    content: attr(data);
+  }
+
+  input {
+    margin: 2px 3px;
+    box-sizing: border-box;
+    display: block;
+    border: 0px;
+    caret-color: var(--color-9);
+    color: var(--color-1);
+    background: transparent;
+    outline: 0px;
+    font-size: 16px;
+  }
+  input[disabled] {
+    color: var(--color-2);
+  }
+
+  input::before {
+    box-sizing: border-box;
+  }
+  input::after {
+    box-sizing: border-box;
+  }
+}
+
+.inputCombobox {
+  display: inline-block;
+  margin: 2px 6px;
+  padding: 0px;
+  border: solid 2px var(--border-color);
+  position: relative;
+  border-radius: 5px;
+  font-size: 16px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1;
+  color: var(--color-1);
+
+  &:hover:not(:has([disabled])) {
+    background: linear-gradient(
+      to right,
+      #ffa600 0%,
+      #ff8700 10%,
+      #ff6a00 50%,
+      #ff8700 90%,
+      #ffa600 100%
+    );
+    border: none;
+    padding: 2px;
+  }
+
+  &:has([disabled]) {
+    border: solid 2px var(--color-2);
+    padding: 0px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background-color: var(--bg-color);
+    border-radius: 3px;
+    z-index: -1;
+  }
+
+  &:after {
+    content: attr(data);
+  }
+
+  select {
+    font-size: 16px;
+    margin: 0px;
+    padding-left: 6px;
+    border: none;
+    height: 24px;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    color: var(--color-1);
+    cursor: pointer;
+  }
+
+  &:hover select {
+    color: var(--color-9);
+  }
+
+  select option {
+    color: var(--text-color);
+  }
+
+  select option:checked {
+    color: var(--bg-color);
+    background-color: var(--color-9);
+  }
+}
+
+.size120 {
+  width: 160px;
+}
+
+.size160 {
+  width: 160px;
+}
+
+.size320 {
+  width: 320px;
+}

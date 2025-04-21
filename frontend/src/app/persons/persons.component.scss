@@ -1,0 +1,35 @@
+:host {
+  .inputContainer {
+    margin-top: 0px;
+    margin-bottom: 7px;
+
+    .float {
+      min-width: 100px;
+      display: inline-block;
+      margin-left: 5px;
+      margin-right: 5px;
+      color: var(--color-1);
+    }
+  }
+
+  .datagrid_Name {
+    width: 220px;
+    min-width: 220px;
+    max-width: 360px;
+  }
+
+  .datagrid_Chapters {
+    min-width: 180px;
+    max-width: 240px;
+  }
+
+  .datagrid_LastSeen {
+    min-width: 290px;
+    max-width: 420px;
+  }
+
+  .datagrid_Tags {
+    min-width: 240px;
+    max-width: 360px;
+  }
+}

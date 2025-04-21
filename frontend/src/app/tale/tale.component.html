@@ -1,0 +1,19 @@
+<div>
+  <p>Choose a tale to navigate</p>
+  @defer{
+    <ul>
+      @for( tale of tales; track tale.id){
+        <li><span class="list-item"><a [routerLink]="['/tale', tale.id]"><span class="CF1">{{tale.name}}</span>, <span class="CF6">{{tale.id}}</span></a></span></li>
+      }
+    </ul>
+    @if( hasError )
+    {
+      <p><span class="CF8">Error:</span> {{operationError}}</p>
+    }
+  }
+  @placeholder
+  {
+    <p class="loading">Tale information...</p>
+  }
+</div>
+<router-outlet></router-outlet>

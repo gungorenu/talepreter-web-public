@@ -1,0 +1,33 @@
+:host {
+  .nav_container {
+    padding: 0px;
+
+    li {
+      display: inline;
+      margin: 0px;
+      text-align: left;
+    }
+
+    li.separator {
+      margin-left: 15px;
+      display: inline-block;
+    }
+
+    li.header-page {
+      margin-left: 20px;
+      display: inline-block;
+    }
+    li.header-today {
+      margin-left: 20px;
+      display: inline-block;
+    }
+    li.header-location {
+      margin-left: 20px;
+      display: inline-block;
+    }
+  }
+
+  .disabled {
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,30 @@
+<div>
+  @defer {
+  <table class="datagrid">
+    <tr>
+      <th class="datagrid_Name">Name</th>
+      <th class="datagrid_Faction">Faction</th>
+      <th class="datagrid_Shops">Shops</th>
+      <th class="datagrid_Visits">Visits</th>
+      <th>Description</th>
+    </tr>
+    @for( settlement of settlements; track settlement.DocumentId ){
+    <tr>
+      <td>
+        <span class="{{ settlement.getSettlementTypeStyle() }}">{{
+          settlement.DocumentId
+        }}</span>
+      </td>
+      <td [innerHTML]="settlement.Faction"></td>
+      <td [innerHTML]="settlement.ShopInfo"></td>
+      <td [innerHTML]="settlement.VisitInfo"></td>
+      <td [innerHTML]="settlement.FormattedDescription"></td>
+    </tr>
+    }
+  </table>
+  @if( hasError ) {
+  <p><span class="CF8">Error:</span> {{ operationError }}</p>
+  } } @placeholder {
+  <p class="loading">Settlement information...</p>
+  }
+</div>

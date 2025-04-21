@@ -1,0 +1,63 @@
+<div>
+  <div>
+    <ul class="container">
+      <li>
+        <a [routerLink]="['/tale/', taleId, taleVersionId, 'progression']"
+          ><button
+            type="button"
+            class="tab-button size160"
+            routerLinkActive="tab-button-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Actors
+          </button></a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/tale/', taleId, taleVersionId, 'progression']"
+          [queryParams]="{ tab: 'chapters' }"
+          ><button
+            type="button"
+            class="tab-button size160"
+            routerLinkActive="tab-button-active"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            Chapters
+          </button></a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/tale/', taleId, taleVersionId, 'progression']"
+          [queryParams]="{ tab: 'timeline' }"
+          ><button
+            type="button"
+            class="tab-button size160"
+            routerLinkActive="tab-button-active"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            Timeline
+          </button></a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/tale/', taleId, taleVersionId, 'progression']"
+          [queryParams]="{ tab: 'caches' }"
+          ><button
+            type="button"
+            class="tab-button size160"
+            routerLinkActive="tab-button-active"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            Caches
+          </button></a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="childView">
+    <ng-container *ngComponentOutlet="currentTab!.component"> </ng-container>
+  </div>
+</div>

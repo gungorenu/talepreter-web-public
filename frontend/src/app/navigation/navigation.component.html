@@ -1,0 +1,97 @@
+<nav>
+  <ul class="nav_container">
+    @if(!hasNoTaleId) {
+    <li>
+      <a [routerLink]="['tale/', taleId]" (click)="clearLocalStorage()"
+        ><button
+          type="button"
+          class="tab-button size160"
+          routerLinkActive="tab-button-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Version Info
+        </button></a
+      >
+    </li>
+    } @if(!hasNoVersionId) {
+    <li>
+      <a
+        [class.disabled]="hasNoVersionId"
+        [routerLink]="['tale/', taleId, taleVersionId, 'progression']"
+        ><button
+          type="button"
+          class="tab-button size160"
+          routerLinkActive="tab-button-active"
+        >
+          Progression
+        </button></a
+      >
+    </li>
+    <li>
+      <a
+        [class.disabled]="hasNoVersionId"
+        [routerLink]="['tale/', taleId, taleVersionId, 'groupsactors']"
+        ><button
+          type="button"
+          class="tab-button size160"
+          routerLinkActive="tab-button-active"
+        >
+          Groups &amp; Actors
+        </button></a
+      >
+    </li>
+    <li>
+      <a
+        [class.disabled]="hasNoVersionId"
+        [routerLink]="['tale/', taleId, taleVersionId, 'settlements']"
+        ><button
+          type="button"
+          class="tab-button size160"
+          routerLinkActive="tab-button-active"
+        >
+          Settlements
+        </button></a
+      >
+    </li>
+    <li>
+      <a
+        [class.disabled]="hasNoVersionId"
+        [routerLink]="['tale/', taleId, taleVersionId, 'anecdotes']"
+        ><button
+          type="button"
+          class="tab-button size160"
+          routerLinkActive="tab-button-active"
+        >
+          Anecdotes
+        </button></a
+      >
+    </li>
+    <li>
+      <a
+        [class.disabled]="hasNoVersionId"
+        [routerLink]="['tale/', taleId, taleVersionId, 'persons']"
+        ><button
+          type="button"
+          class="tab-button size160"
+          routerLinkActive="tab-button-active"
+        >
+          Persons
+        </button></a
+      >
+    </li>
+    <li class="separator">|</li>
+    <li class="header-page">
+      <span class="CF2">{{ getChapterPage() }}</span>
+    </li>
+    <li class="separator">|</li>
+    <li class="header-today">
+      <span class="CF0">{{ getTaleToday() }}</span>
+    </li>
+    <li class="separator">|</li>
+    <li class="header-location">
+      <span class="CF0" [innerHTML]="getCurrentLocation()"></span>
+    </li>
+    }
+  </ul>
+</nav>
+<router-outlet></router-outlet>

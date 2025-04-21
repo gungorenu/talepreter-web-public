@@ -1,0 +1,31 @@
+<div>
+  <p>Select a tale version to view data</p>
+  @defer{
+  <ul>
+    @for( version of versions; track version.id ){
+    <li>
+      <span class="list-item"
+        ><a (click)="onVersionNavigate($event, version.id)"
+          ><span class="CF1">{{ version.id }}</span
+          >,
+          <span class="{{ getVersionStatusStyle(version.status) }}">{{
+            version.status
+          }}</span
+          >,
+          <span class="CF2"
+            >C#{{ version.lastPage.chapter }}/P#{{
+              version.lastPage.page
+            }}</span
+          >
+        </a></span
+      >
+    </li>
+    }
+  </ul>
+  @if( hasError ) {
+  <p><span class="CF8">Error:</span> {{ operationError }}</p>
+  } } @placeholder {
+  <p class="loading">Version information...</p>
+  }
+</div>
+<router-outlet></router-outlet>

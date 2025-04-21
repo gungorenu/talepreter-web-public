@@ -1,0 +1,50 @@
+<div>
+  <div>
+    <label for="groups" class="inputCombobox">
+      <select
+        id="groups"
+        title="-"
+        class="size320"
+        [formControl]="selectedGroup"
+      >
+        @for( group of groups; track group.DocumentId ) {
+        <option [ngValue]="group">{{ group.DocumentId }}</option>
+        }
+      </select>
+    </label>
+  </div>
+  <div class="actorList">
+    @for( actor of selectedGroupActors; track actor.DocumentId){
+    <button
+      (click)="
+        onActorSelected(
+          $event,
+          actor.DocumentId,
+          actor.IsGroupActor,
+          actor.Group
+        )
+      "
+      class="tab-button size120"
+      [ngClass]="
+        actor.DocumentId == selectedActor?.DocumentId ? 'tab-button-active' : ''
+      "
+      type="button"
+    >
+      <span class="{{ actor.IsGroupActor ? 'CF7' : 'CF2' }}">{{
+        actor.DocumentId
+      }}</span>
+    </button>
+    }
+  </div>
+  <div class="actorDetails">
+    @if(actorDetailView != null){
+    <ng-container
+      *ngComponentOutlet="
+        actorDetailView!.component;
+        inputs: { actorId: selectedActor?._id }
+      "
+    >
+    </ng-container>
+    }
+  </div>
+</div>

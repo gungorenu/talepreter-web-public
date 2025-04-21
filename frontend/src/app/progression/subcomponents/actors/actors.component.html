@@ -1,0 +1,33 @@
+<div>
+  <div>
+    <span [innerHTML]="groupChallenge"></span>
+    <br />
+    <span [innerHTML]="groupCost"></span>
+  </div>
+  <div>
+    @defer {
+    <table class="datagrid">
+      <tr>
+        <th class="datagrid_Name">Name</th>
+        <th class="datagrid_Progress">Progress</th>
+        <th class="datagrid_Wealth">Wealth</th>
+        <th>Special Modifiers</th>
+      </tr>
+      @for( actor of actorSummaries; track actor.DocumentId ){
+      <tr>
+        <td>
+          <span class="CF2">{{ actor.DocumentId }}</span>
+        </td>
+        <td [innerHTML]="actor.ProgressField"></td>
+        <td [innerHTML]="actor.WealthField"></td>
+        <td [innerHTML]="actor.SpecialModifierField"></td>
+      </tr>
+      }
+    </table>
+    @if( hasError ) {
+    <p><span class="CF8">Error:</span> {{ operationError }}</p>
+    } } @placeholder {
+    <p class="loading">Group summary...</p>
+    }
+  </div>
+</div>

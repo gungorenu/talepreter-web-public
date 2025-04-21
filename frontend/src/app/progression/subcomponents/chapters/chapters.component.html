@@ -1,0 +1,28 @@
+<div>
+  @defer {
+  <table class="datagrid">
+    <tr>
+      <th class="datagrid_ID">ID</th>
+      <th class="datagrid_Title">Title</th>
+      <th class="datagrid_PageInfo">Page Info</th>
+      <th class="datagrid_StartEndInfo">Start and End</th>
+      <th class="datagrid_Reference">Reference</th>
+      <th>Summary</th>
+    </tr>
+    @for( chapter of chapters; track chapter._id ){
+    <tr>
+      <td><span class="CF9" [innerHTML]="chapter._id"></span></td>
+      <td [innerHTML]="chapter.Title"></td>
+      <td [innerHTML]="chapter.PageInfo"></td>
+      <td [innerHTML]="chapter.StartEndInfo"></td>
+      <td><span class="CF6" [innerHTML]="chapter.Reference"></span></td>
+      <td [innerHTML]="chapter.SummaryInfo"></td>
+    </tr>
+    }
+  </table>
+  @if( hasError ) {
+  <p><span class="CF8">Error:</span> {{ operationError }}</p>
+  } } @placeholder {
+  <p class="loading">Group summary...</p>
+  }
+</div>

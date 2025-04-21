@@ -1,0 +1,19 @@
+:host {
+  .groupActorView {
+    width: 100%;
+    td.header {
+      width: 160px;
+      color: var(--color-1);
+      vertical-align: top;
+    }
+    td.separator {
+      width: 24px;
+      color: var(--color-1);
+      vertical-align: top;
+    }
+  }
+
+  .inventoryView {
+    margin-top: 5px;
+  }
+}

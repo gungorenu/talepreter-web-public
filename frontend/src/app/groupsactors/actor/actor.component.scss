@@ -1,0 +1,29 @@
+:host {
+  .actorView {
+    width: 100%;
+    td.header {
+      width: 160px;
+      color: var(--color-1);
+      vertical-align: top;
+    }
+    td.separator {
+      width: 24px;
+      color: var(--color-1);
+      vertical-align: top;
+    }
+  }
+
+  .inventoryView,
+  .memoryView,
+  .cohortView {
+    margin-top: 5px;
+  }
+
+  .memoryView {
+    display: none;
+  }
+
+  .hidden {
+    display: none;
+  }
+}

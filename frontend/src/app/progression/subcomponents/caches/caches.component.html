@@ -1,0 +1,20 @@
+<div>
+  @defer {
+  <table class="datagrid">
+    <tr>
+      <th class="datagrid_Name">Name</th>
+      <th>Notes</th>
+    </tr>
+    @for( cache of caches; track cache.DocumentId ){
+    <tr>
+      <td [innerHTML]="cache.DocumentId"></td>
+      <td [innerHTML]="cache.Content"></td>
+    </tr>
+    }
+  </table>
+  @if( hasError ) {
+  <p><span class="CF8">Error:</span> {{ operationError }}</p>
+  } } @placeholder {
+  <p class="loading">Cache information...</p>
+  }
+</div>

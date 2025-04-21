@@ -1,0 +1,43 @@
+<div>
+  <div class="summaryView">
+    <table class="actorView" [cellSpacing]="0" [cellPadding]="0">
+      @for( prop of actorProperties; track prop.Order) {
+      <tr>
+        <td class="header">{{ prop.Title }}</td>
+        <td class="separator">:</td>
+        <td [innerHTML]="prop.Value"></td>
+      </tr>
+      }
+    </table>
+  </div>
+  <div class="inventoryView">
+    <app-expander [shift]="true">
+      <span ex_header [innerHTML]="actorInventory.Header"></span>
+      <app-expander [shift]="false" ex_content>
+        <span ex_header [innerHTML]="actorInventory.Equipped.Header"></span>
+        <span ex_content [innerHTML]="actorInventory.Equipped.Content"></span>
+      </app-expander>
+      <app-expander [shift]="false" ex_content>
+        <span ex_header [innerHTML]="actorInventory.Backpack.Header"></span>
+        <span ex_content [innerHTML]="actorInventory.Backpack.Content"></span>
+      </app-expander>
+      <app-expander [shift]="false" ex_content>
+        <span ex_header [innerHTML]="actorInventory.Stash.Header"></span>
+        <span ex_content [innerHTML]="actorInventory.Stash.Content"></span>
+      </app-expander>
+    </app-expander>
+  </div>
+  <div class="memoryView">
+    <span class="CF8">TODO: new concept and requires data first</span>
+  </div>
+  <div class="cohortView" [class]="cohorts.length < 1 ? 'hidden' : ''">
+    <app-expander [shift]="true">
+      <span class="CF1" ex_header>Cohorts:</span>
+      <div ex_content>
+        @for( cohort of cohorts ; track cohort._id ){
+        <app-cohort [cohortModel]="cohort"></app-cohort>
+        }
+      </div>
+    </app-expander>
+  </div>
+</div>

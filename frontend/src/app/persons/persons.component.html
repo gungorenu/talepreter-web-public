@@ -1,0 +1,91 @@
+<div>
+  <div class="inputContainer">
+    <form
+      [formGroup]="searchForm"
+      (ngSubmit)="searchPersons($event.submitter.id)"
+    >
+      <label class="inputTextbox">
+        <input type="text" title="pattern" formControlName="searchPattern" />
+      </label>
+      <label class="inputCheckbox">
+        Search Content
+        <input
+          type="checkbox"
+          title="searchInContent"
+          formControlName="searchInContent"
+        />
+        <span class="checkmark"></span>
+      </label>
+      <label class="inputCheckbox">
+        Skip Dead
+        <input type="checkbox" title="skipDead" formControlName="skipDead" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="inputCheckbox">
+        Skip Dummy
+        <input type="checkbox" title="skipDummy" formControlName="skipDummy" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="inputCheckbox">
+        Current Chapter Only
+        <input
+          type="checkbox"
+          title="searchCurrentChapter"
+          formControlName="currentChapterOnly"
+        />
+        <span class="checkmark"></span>
+      </label>
+      <div class="float">
+        <button type="submit" id="search" class="hover-button size160">
+          Search
+        </button>
+      </div>
+      <div class="float">
+        <button type="submit" id="dummies" class="hover-button size160">
+          Dummies Only
+        </button>
+      </div>
+      <div class="float">
+        <button type="submit" id="deathbed" class="hover-button size160">
+          Deathbed
+        </button>
+      </div>
+    </form>
+  </div>
+  <div>
+    @defer {
+    <table class="datagrid">
+      <tr>
+        <th class="datagrid_Name">Name</th>
+        <th class="datagrid_Chapters">Chapters</th>
+        <th class="datagrid_LastSeen">Last Seen At</th>
+        <th class="datagrid_Tags">Tags</th>
+        <th>Notes</th>
+      </tr>
+      @for( person of persons; track person.DocumentId ){
+      <tr>
+        <td>
+          <span class="{{ person.getDiplomacyStyle() }}">{{
+            person.DocumentId
+          }}</span>
+          @if(person.PastActor != null) {
+          <span class="CF1"> &gt;&gt; </span>
+          <span class="{{ getDiplomacyStyle(person.PastActorDiplomacy!) }}">{{
+            person.PastActor
+          }}</span>
+          }
+        </td>
+        <td [innerHTML]="person.ChapterInfo"></td>
+        <td [innerHTML]="person.LastSeenAt"></td>
+        <td [innerHTML]="person.Tags"></td>
+        <td [innerHTML]="person.FormattedNotes"></td>
+      </tr>
+      }
+    </table>
+    @if( hasError ) {
+    <p><span class="CF8">Error:</span> {{ operationError }}</p>
+    } } @placeholder {
+    <p class="loading">Person list...</p>
+    }
+  </div>
+</div>

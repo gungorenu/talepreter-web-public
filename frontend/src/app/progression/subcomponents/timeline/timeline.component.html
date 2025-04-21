@@ -1,0 +1,22 @@
+<div>
+  @defer {
+  <table class="datagrid">
+    <tr>
+      <th class="datagrid_ChapterPage">Chapter / Page</th>
+      <th class="datagrid_Date">Date</th>
+      <th>Notes</th>
+    </tr>
+    @for( note of notes; track note.Id ){
+    <tr>
+      <td [innerHTML]="note.ChapterPage" class="datagrid_ChapterPage"></td>
+      <td [innerHTML]="note.Date"></td>
+      <td [innerHTML]="note.Content"></td>
+    </tr>
+    }
+  </table>
+  @if( hasError ) {
+  <p><span class="CF8">Error:</span> {{ operationError }}</p>
+  } } @placeholder {
+  <p class="loading">Timeline information...</p>
+  }
+</div>

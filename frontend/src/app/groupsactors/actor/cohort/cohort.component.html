@@ -1,0 +1,9 @@
+<div>
+  <div class="summaryView" [innerHTML]="cohortInfo?.Header"></div>
+  <div class="inventoryView" *ngIf="(cohortInfo?.Inventory?.length ?? 0) > 0">
+    <app-expander [shift]="true">
+      <span ex_header [innerHTML]="cohortInfo?.InventoryBlock?.Header"></span>
+      <span ex_content [innerHTML]="cohortInfo?.InventoryBlock?.Content"></span>
+    </app-expander>
+  </div>
+</div>

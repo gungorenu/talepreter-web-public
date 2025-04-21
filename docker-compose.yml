@@ -1,0 +1,29 @@
+services:
+
+  svc-web:
+    build:
+      context: frontend
+      args:
+        API_ENDPOINT: ${WEBAPI_ENDPOINT:-http://localhost:19501}
+    image: ${REGISTRY:-dev.talepreter.io}/svc-web:${TAG:-latest}
+    restart: always
+    ports:
+      - "19401:19401" # specify port forewarding
+    environment:
+      - PORT=19401
+
+  svc-web-api:
+    build: api
+    image: ${REGISTRY:-dev.talepreter.io}/svc-web-api:${TAG:-latest}
+    restart: always
+    ports:
+      - "19501:19501" # specify port forewarding
+    environment:
+      - SECRET=${SECRET}
+      - MONGO_DB_USERNAME=${MONGO_DB_USERNAME}
+      - MONGO_DB_PASSWORD=${MONGO_DB_PASSWORD}
+      - MONGO_DB_HOST=${MONGO_DB_HOST}
+      - MONGO_DB_PORT=${MONGO_DB_PORT}
+      - MONGO_DB_DATABASE=${MONGO_DB_DATABASE}
+      - EXPRESS_PORT=${EXPRESS_PORT}
+      - TALEPRETER_API_ENDPOINT=${TALEPRETER_API_ENDPOINT}
