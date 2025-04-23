@@ -1,0 +1,54 @@
+<div class="wrap-collabsible">
+  <table>
+    <tr>
+      <td class="expanderTD" [class]="hasChildren() ? '' : 'hidden'">
+        <input
+          id="collapsible"
+          class="toggle"
+          type="checkbox"
+          title="expander"
+          (change)="changed($event)"
+          [(checked)]="checked"
+        />
+        <label for="collapsible" class="lbl-toggle" tabindex="0"></label>
+      </td>
+      <td class="headerTD">
+        <div class="header">
+          <button class="idHint hasTooltip">
+            !
+            <div class="tooltiptext tooltip-center">
+              <span class="CF3" [innerText]="data()?.DocumentId"></span>
+            </div>
+          </button>
+          <div class="title">
+            <span [innerHTML]="data()?.Title | safe" class="maxed"></span>
+          </div>
+          <span class="separator">:</span>
+          <div class="mentions">
+            @for( mention of data()?.SortedMentions ; track mention.Tracker) {
+            <div class="float">
+              <div class="float mentionHeader hasTooltip">
+                <div class="float" [innerHtml]="mention.Header | safe"></div>
+                <div
+                  class="tooltiptext tooltip-left"
+                  [innerHtml]="mention.Hint | safe"
+                ></div>
+              </div>
+              <div [innerHtml]="mention.Content | safe" class="float"></div>
+            </div>
+            }
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="contentTD" colspan="2">
+        <div class="collapsible-content" [class]="checked ? 'expand' : ''">
+          @for( child of data()?.Children ; track child._id ){
+          <app-anecdote [roots]="roots()" [data]="child"></app-anecdote>
+          }
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

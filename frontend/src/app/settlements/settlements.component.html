@@ -15,10 +15,10 @@
           settlement.DocumentId
         }}</span>
       </td>
-      <td [innerHTML]="settlement.Faction"></td>
-      <td [innerHTML]="settlement.ShopInfo"></td>
-      <td [innerHTML]="settlement.VisitInfo"></td>
-      <td [innerHTML]="settlement.FormattedDescription"></td>
+      <td [innerHTML]="settlement.Faction | safe"></td>
+      <td [innerHTML]="settlement.ShopInfo | safe"></td>
+      <td [innerHTML]="settlement.VisitInfo | safe"></td>
+      <td [innerHTML]="settlement.Description | safe"></td>
     </tr>
     }
   </table>

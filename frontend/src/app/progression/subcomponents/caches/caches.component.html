@@ -7,8 +7,8 @@
     </tr>
     @for( cache of caches; track cache.DocumentId ){
     <tr>
-      <td [innerHTML]="cache.DocumentId"></td>
-      <td [innerHTML]="cache.Content"></td>
+      <td [innerHTML]="cache.DocumentId | safe"></td>
+      <td [innerHTML]="cache.Content | safe"></td>
     </tr>
     }
   </table>

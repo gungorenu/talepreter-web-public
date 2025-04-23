@@ -1,6 +1,14 @@
 <div class="wrap-collabsible">
-  <input id="collapsible3" class="toggle" type="checkbox" title="expander" />
-  <label for="collapsible3" class="lbl-toggle" tabindex="0"></label>
+  <!-- see ts comments -->
+  <input
+    id="collapsible"
+    class="toggle"
+    type="checkbox"
+    title="expander"
+    (change)="changed($event)"
+    [(checked)]="checked"
+  />
+  <label for="collapsible" class="lbl-toggle" tabindex="0"></label>
   <div class="header"><ng-content select="[ex_header]"></ng-content></div>
   <div class="collapsible-content" [ngStyle]="{ 'margin-left': leftMargin }">
     <div class="content-inner">

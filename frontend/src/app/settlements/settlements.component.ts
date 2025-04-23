@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { TaleVersionSpecificComponent } from '../taleversionspecific';
 import { VersionService } from '../services/version.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Settlement } from '../../domain/models/settlement';
+import { SafePipe } from '../../library/safe';
 
 @Component({
   selector: 'app-settlements',
-  imports: [],
+  imports: [SafePipe],
   templateUrl: './settlements.component.html',
   styleUrl: './settlements.component.scss',
 })
@@ -14,8 +14,8 @@ export class SettlementsComponent extends TaleVersionSpecificComponent {
   settlements: Settlement[] = [];
   operationError: string = '';
   hasError: boolean = false;
-  constructor(private versionService: VersionService, doms: DomSanitizer) {
-    super(doms);
+  constructor(private versionService: VersionService) {
+    super();
   }
 
   getSettlements(): void {
@@ -39,7 +39,7 @@ export class SettlementsComponent extends TaleVersionSpecificComponent {
         var results: Settlement[] = [];
         for (let i = 0; i < sorted.length; i++) {
           var settlement: Settlement = Object.assign(new Settlement(), sorted[i]);
-          settlement.decorate(this.getWorldEra(), (s) => this.safeHtml(s));
+          settlement.decorate(this.getWorldEra());
           results.push(settlement);
         }
         this.settlements = results;

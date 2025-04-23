@@ -1,6 +1,5 @@
 import { Component, Type } from '@angular/core';
 import { TaleVersionSpecificComponent } from '../taleversionspecific';
-import { DomSanitizer } from '@angular/platform-browser';
 import { VersionService } from '../services/version.service';
 import { ActorSummary, groupActorList, GroupSummary } from '../../domain/models/group';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -22,8 +21,8 @@ export class GroupsActorsComponent extends TaleVersionSpecificComponent {
   selectedGroupActors: ActorSummary[] = [];
   selectedActor?: ActorSummary;
   actorDetailView?: { component: Type<any>; actorId: string };
-  constructor(private versionService: VersionService, doms: DomSanitizer) {
-    super(doms);
+  constructor(private versionService: VersionService) {
+    super();
     this.selectedGroup.valueChanges.subscribe((value) => this.listGroupActors(value!));
   }
 

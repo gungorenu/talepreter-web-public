@@ -8,7 +8,7 @@
         <input type="text" title="pattern" formControlName="searchPattern" />
       </label>
       <label class="inputCheckbox">
-        Search Content
+        Search In Content
         <input
           type="checkbox"
           title="searchInContent"
@@ -75,10 +75,10 @@
           }}</span>
           }
         </td>
-        <td [innerHTML]="person.ChapterInfo"></td>
-        <td [innerHTML]="person.LastSeenAt"></td>
-        <td [innerHTML]="person.Tags"></td>
-        <td [innerHTML]="person.FormattedNotes"></td>
+        <td [innerHTML]="person.ChapterInfo | safe"></td>
+        <td [innerHTML]="person.LastSeenAt | safe"></td>
+        <td [innerHTML]="person.Tags | safe"></td>
+        <td [innerHTML]="person.FormattedNotes | safe"></td>
       </tr>
       }
     </table>

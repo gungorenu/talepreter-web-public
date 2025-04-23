@@ -1,0 +1,115 @@
+:host {
+  .wrap-collabsible {
+    margin: 5px 0px;
+
+    table {
+      width: 100%;
+    }
+
+    .expanderTD {
+      width: 28px;
+      vertical-align: top;
+    }
+
+    .headerTD {
+      border-top: solid 1px var(--border-color);
+    }
+
+    .idHint {
+      width: 18px;
+      height: 18px;
+      margin: 5px 5px 5px 0px;
+      border-radius: 10px;
+      appearance: none;
+      background: transparent;
+      color: var(--color-7);
+      border: solid 1px var(--border-color);
+      cursor: pointer;
+    }
+    .separator {
+      color: var(--color-1);
+      margin: 0 12px;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+    .header {
+      display: flex;
+      margin-top: -2px;
+      vertical-align: top;
+      max-width: 100%;
+    }
+
+    .lbl-toggle {
+      display: inline-block;
+      padding-left: 5px;
+      color: transparent;
+      cursor: pointer;
+      width: 15px;
+      height: 20px;
+      border-radius: 20px;
+      border: solid 2px var(--border-color);
+      transition: all 0.25s ease-out;
+    }
+    .lbl-toggle:hover {
+      border: solid 2px var(--color-9);
+    }
+    .lbl-toggle:hover::before {
+      color: var(--color-9);
+    }
+
+    .lbl-toggle::before {
+      content: " ";
+      display: inline-block;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 5px solid currentColor;
+      transform: rotate(90deg) translateX(-5px) translateY(-2.5px);
+      transition: transform 0.2s ease-out;
+      color: var(--color-2);
+      border-radius: 20px;
+    }
+
+    .toggle:checked + .lbl-toggle::before {
+      transform: translateY(-5px) translateX(2.5px) rotate(-90deg);
+    }
+    .collapsible-content {
+      max-height: 0px;
+      margin-left: 34px;
+      overflow: hidden;
+      transition: max-height 0.25s ease-in-out;
+    }
+
+    .expand {
+      max-height: 100%;
+      overflow: visible;
+    }
+
+    .mentions {
+      display: flex;
+      flex-direction: column;
+      .float {
+        display: inline;
+        margin-right: 6px;
+      }
+
+      .mentionHeader {
+        max-width: 240px;
+      }
+    }
+  }
+  .title {
+    display: flex;
+    min-width: max-content;
+    //min-width: fit-content;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
+  .maxed {
+    max-width: 320px;
+  }
+}

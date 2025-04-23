@@ -89,7 +89,7 @@
     </li>
     <li class="separator">|</li>
     <li class="header-location">
-      <span class="CF0" [innerHTML]="getCurrentLocation()"></span>
+      <span class="CF0" [innerHTML]="getCurrentLocation() | safe"></span>
     </li>
     }
   </ul>

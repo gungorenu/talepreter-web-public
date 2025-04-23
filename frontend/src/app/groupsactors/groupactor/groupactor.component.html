@@ -5,15 +5,15 @@
       <tr>
         <td class="header">{{ prop.Title }}</td>
         <td class="separator">:</td>
-        <td [innerHTML]="prop.Value"></td>
+        <td [innerHTML]="prop.Value | safe"></td>
       </tr>
       }
     </table>
   </div>
   <div class="inventoryView">
     <app-expander [shift]="false">
-      <span [innerHTML]="groupActorInventory.Header" ex_header></span>
-      <span [innerHTML]="groupActorInventory.List" ex_content></span>
+      <span [innerHTML]="groupActorInventory.Header | safe" ex_header></span>
+      <span [innerHTML]="groupActorInventory.List | safe" ex_content></span>
     </app-expander>
   </div>
 </div>

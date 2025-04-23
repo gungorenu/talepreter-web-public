@@ -25,7 +25,6 @@ import {
   getGroup as VC_getGroup,
   getSettlements as VC_getSettlements,
   searchPersons as VC_searchPersons,
-  getAnecdotes as VC_getAnecdotes,
   getActors as VC_getActors,
   getDeathbed as VC_getDeathbed,
   searchDummies as VC_searchDummies,
@@ -35,6 +34,10 @@ import {
   getCaches as VC_getCaches,
   getActorDetails as VC_getActorDetails,
   getGroupActorDetails as VC_getGroupActorDetails,
+  loadRoots as VC_getRootAnecdotes,
+  expandAnecdote as VC_expandAnecdote,
+  searchAnecdote as VC_searchAnecdote,
+  fetchAnecdote as VC_fetchAnecdote,
 } from './controllers/version.controller.js';
 router.route('/version/:taleId/:versionId/world').get(VC_getWorld);
 router.route('/version/:taleId/:versionId/group').get(VC_getGroup);
@@ -49,7 +52,10 @@ router.route('/version/:taleId/:versionId/groupActorDetails').post(VC_getGroupAc
 router.route('/version/:taleId/:versionId/persons').post(VC_searchPersons);
 router.route('/version/:taleId/:versionId/deathbed').post(VC_getDeathbed);
 router.route('/version/:taleId/:versionId/dummies').post(VC_searchDummies);
-router.route('/version/:taleId/:versionId/anecdotes').get(VC_getAnecdotes);
+router.route('/version/:taleId/:versionId/anecdotes/root').get(VC_getRootAnecdotes);
+router.route('/version/:taleId/:versionId/anecdotes/expand').post(VC_expandAnecdote);
+router.route('/version/:taleId/:versionId/anecdotes/search').post(VC_searchAnecdote);
+router.route('/version/:taleId/:versionId/anecdotes/fetch').post(VC_fetchAnecdote);
 
 // Export API routes
 export default router;

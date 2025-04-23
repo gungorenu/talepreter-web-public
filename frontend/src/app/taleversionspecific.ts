@@ -1,14 +1,12 @@
 import { inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { validate as uuidValidate } from 'uuid';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export abstract class TaleVersionSpecificComponent {
   readonly activatedRoute = inject(ActivatedRoute);
   readonly router = inject(Router);
   taleId: string | null = null;
   taleVersionId: string | null = null;
-  constructor(private doms: DomSanitizer) {}
 
   onInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -41,9 +39,5 @@ export abstract class TaleVersionSpecificComponent {
   getWorldToday(): number {
     const todayN = parseInt(localStorage.getItem('world-today') ?? '');
     return todayN;
-  }
-
-  safeHtml(value: string): SafeHtml {
-    return this.doms.bypassSecurityTrustHtml(value);
   }
 }

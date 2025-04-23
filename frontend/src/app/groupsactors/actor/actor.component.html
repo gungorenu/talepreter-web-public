@@ -5,25 +5,40 @@
       <tr>
         <td class="header">{{ prop.Title }}</td>
         <td class="separator">:</td>
-        <td [innerHTML]="prop.Value"></td>
+        <td [innerHTML]="prop.Value | safe"></td>
       </tr>
       }
     </table>
   </div>
   <div class="inventoryView">
     <app-expander [shift]="true">
-      <span ex_header [innerHTML]="actorInventory.Header"></span>
+      <span ex_header [innerHTML]="actorInventory.Header | safe"></span>
       <app-expander [shift]="false" ex_content>
-        <span ex_header [innerHTML]="actorInventory.Equipped.Header"></span>
-        <span ex_content [innerHTML]="actorInventory.Equipped.Content"></span>
+        <span
+          ex_header
+          [innerHTML]="actorInventory.Equipped.Header | safe"
+        ></span>
+        <span
+          ex_content
+          [innerHTML]="actorInventory.Equipped.Content | safe"
+        ></span>
       </app-expander>
       <app-expander [shift]="false" ex_content>
-        <span ex_header [innerHTML]="actorInventory.Backpack.Header"></span>
-        <span ex_content [innerHTML]="actorInventory.Backpack.Content"></span>
+        <span
+          ex_header
+          [innerHTML]="actorInventory.Backpack.Header | safe"
+        ></span>
+        <span
+          ex_content
+          [innerHTML]="actorInventory.Backpack.Content | safe"
+        ></span>
       </app-expander>
       <app-expander [shift]="false" ex_content>
-        <span ex_header [innerHTML]="actorInventory.Stash.Header"></span>
-        <span ex_content [innerHTML]="actorInventory.Stash.Content"></span>
+        <span ex_header [innerHTML]="actorInventory.Stash.Header | safe"></span>
+        <span
+          ex_content
+          [innerHTML]="actorInventory.Stash.Content | safe"
+        ></span>
       </app-expander>
     </app-expander>
   </div>

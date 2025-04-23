@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
 import { TaleVersionSpecificComponent } from '../../../taleversionspecific';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { VersionService } from '../../../services/version.service';
 import { ActorSummary, decorateGroupSummary, GroupSummary } from '../../../../domain/models/group';
+import { SafePipe } from '../../../../library/safe';
 
 @Component({
   selector: 'app-progression-actors',
   templateUrl: './actors.component.html',
   styleUrl: './actors.component.scss',
+  imports: [SafePipe],
 })
 export class ActorsComponent extends TaleVersionSpecificComponent {
   actorSummaries: ActorSummary[] = [];
   operationError: string = '';
   hasError: boolean = false;
-  groupChallenge?: SafeHtml;
-  groupCost?: SafeHtml;
-  constructor(private versionService: VersionService, doms: DomSanitizer) {
-    super(doms);
+  groupChallenge?: string;
+  groupCost?: string;
+  constructor(private versionService: VersionService) {
+    super();
   }
 
   getGroupSummary(): void {
@@ -43,7 +44,7 @@ export class ActorsComponent extends TaleVersionSpecificComponent {
 
     this.versionService.getGroupSummary(this.taleId, this.taleVersionId, currentGroup).subscribe({
       next: (data: GroupSummary) => {
-        decorateGroupSummary(data, (s) => this.safeHtml(s));
+        decorateGroupSummary(data);
         this.groupChallenge = data.Challenge;
         this.groupCost = data.Cost;
         var sorted = data.Actors.sort((a: any, b: any) => (a.Order > b.Order ? 1 : 0));

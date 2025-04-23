@@ -12,11 +12,11 @@
     @for( chapter of chapters; track chapter._id ){
     <tr>
       <td><span class="CF9" [innerHTML]="chapter._id"></span></td>
-      <td [innerHTML]="chapter.Title"></td>
-      <td [innerHTML]="chapter.PageInfo"></td>
-      <td [innerHTML]="chapter.StartEndInfo"></td>
-      <td><span class="CF6" [innerHTML]="chapter.Reference"></span></td>
-      <td [innerHTML]="chapter.SummaryInfo"></td>
+      <td [innerHTML]="chapter.Title | safe"></td>
+      <td [innerHTML]="chapter.PageInfo | safe"></td>
+      <td [innerHTML]="chapter.StartEndInfo | safe"></td>
+      <td><span class="CF6" [innerHTML]="chapter.Reference | safe"></span></td>
+      <td [innerHTML]="chapter.Summary | safe"></td>
     </tr>
     }
   </table>

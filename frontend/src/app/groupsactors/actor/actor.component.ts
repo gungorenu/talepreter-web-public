@@ -1,6 +1,5 @@
 import { Component, model, OnChanges, SimpleChanges } from '@angular/core';
 import { TaleVersionSpecificComponent } from '../../taleversionspecific';
-import { DomSanitizer } from '@angular/platform-browser';
 import { VersionService } from '../../services/version.service';
 import { CommonModule } from '@angular/common';
 import {
@@ -14,10 +13,11 @@ import {
 } from '../../../domain/models/actor';
 import { ExpanderComponent } from '../../expander/expander.component';
 import { CohortComponent } from './cohort/cohort.component';
+import { SafePipe } from '../../../library/safe';
 
 @Component({
   selector: 'app-actor',
-  imports: [CommonModule, ExpanderComponent, CohortComponent],
+  imports: [CommonModule, ExpanderComponent, CohortComponent, SafePipe],
   templateUrl: './actor.component.html',
   styleUrl: './actor.component.scss',
 })
@@ -28,8 +28,8 @@ export class ActorComponent extends TaleVersionSpecificComponent implements OnCh
   actorProperties: ActorProperty[] = [];
   actorInventory: ActorInventory = new ActorInventory();
   cohorts: Cohort[] = [];
-  constructor(private versionService: VersionService, doms: DomSanitizer) {
-    super(doms);
+  constructor(private versionService: VersionService) {
+    super();
   }
 
   getActor(): void {
@@ -51,9 +51,9 @@ export class ActorComponent extends TaleVersionSpecificComponent implements OnCh
     }
     this.versionService.getActorDetails(this.taleId, this.taleVersionId, this.actorId()).subscribe({
       next: (data: Actor) => {
-        this.actorProperties = populateActorProperties(data, (s) => this.safeHtml(s));
-        this.actorInventory = prepareActorInventory(data, (s) => this.safeHtml(s));
-        this.cohorts = prepareActorCohorts(data, (s) => this.safeHtml(s));
+        this.actorProperties = populateActorProperties(data);
+        this.actorInventory = prepareActorInventory(data);
+        this.cohorts = prepareActorCohorts(data);
         this.hasError = false;
       },
       error: (error) => {

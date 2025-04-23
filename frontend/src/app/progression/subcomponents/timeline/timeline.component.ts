@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { TaleVersionSpecificComponent } from '../../../taleversionspecific';
-import { DomSanitizer } from '@angular/platform-browser';
 import { populateWorldTimelineNotes, TimelineNote, WorldChapters } from '../../../../domain/models/world';
 import { VersionService } from '../../../services/version.service';
+import { SafePipe } from '../../../../library/safe';
 
 @Component({
   selector: 'app-progression-timeline',
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss',
+  imports: [SafePipe],
 })
 export class TimelineComponent extends TaleVersionSpecificComponent {
   notes: TimelineNote[] = [];
   operationError: string = '';
   hasError: boolean = false;
-  constructor(private versionService: VersionService, doms: DomSanitizer) {
-    super(doms);
+  constructor(private versionService: VersionService) {
+    super();
   }
 
   getTimeline(): void {
@@ -35,7 +36,7 @@ export class TimelineComponent extends TaleVersionSpecificComponent {
 
     this.versionService.getTimeline(this.taleId, this.taleVersionId).subscribe({
       next: (data: WorldChapters) => {
-        this.notes = populateWorldTimelineNotes(data, (s) => this.safeHtml(s));
+        this.notes = populateWorldTimelineNotes(data);
         this.hasError = false;
       },
       error: (error) => {

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { TaleVersionSpecificComponent } from '../taleversionspecific';
-import { DomSanitizer } from '@angular/platform-browser';
 import { VersionService } from '../services/version.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Person } from '../../domain/models/person';
+import { SafePipe } from '../../library/safe';
 
 @Component({
   selector: 'app-persons',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SafePipe],
   templateUrl: './persons.component.html',
   styleUrl: './persons.component.scss',
 })
@@ -23,8 +23,8 @@ export class PersonsComponent extends TaleVersionSpecificComponent {
   persons: Person[] = [];
   operationError: string = '';
   hasError: boolean = false;
-  constructor(private versionService: VersionService, doms: DomSanitizer) {
-    super(doms);
+  constructor(private versionService: VersionService) {
+    super();
   }
 
   ngOnInit() {
@@ -81,7 +81,7 @@ export class PersonsComponent extends TaleVersionSpecificComponent {
         var results: Person[] = [];
         for (let i = 0; i < sorted.length; i++) {
           var person: Person = Object.assign(new Person(), sorted[i]);
-          person.decorate(this.getWorldToday(), this.getCurrentChapter(), (s) => this.safeHtml(s));
+          person.decorate(this.getWorldToday(), this.getCurrentChapter());
           results.push(person);
         }
         this.persons = results;

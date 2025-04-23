@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { formatText } from '../../library/string';
 import { getTaleDate } from '../../library/datetime';
+import { SafePipe } from '../../library/safe';
 
 @Component({
   selector: 'app-navigation',
-  imports: [RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, SafePipe],
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss', './../../styles.scss'],
 })
@@ -16,7 +15,7 @@ export class NavigationComponent {
   taleVersionId: string | null = null;
   hasNoTaleId: boolean = true;
   hasNoVersionId: boolean = true;
-  constructor(private doms: DomSanitizer) {
+  constructor() {
     this.router.events.subscribe((evnt) => {
       if (evnt instanceof ActivationEnd) {
         const newTaleId = evnt.snapshot.paramMap.get('taleId');
@@ -39,18 +38,18 @@ export class NavigationComponent {
     });
   }
 
-  getChapterPage() {
+  getChapterPage(): string {
     const chapter = localStorage?.getItem('world-currentChapter') ?? '.';
     const page = localStorage?.getItem('world-currentPage') ?? '.';
     return `C#${chapter} / P#${page}`;
   }
-  getTaleToday() {
+  getTaleToday(): string {
     const todayN = parseInt(localStorage?.getItem('world-today') ?? '0');
     const era = localStorage?.getItem('world-era') ?? '';
     return getTaleDate(todayN, era);
   }
-  getCurrentLocation() {
-    return this.doms.bypassSecurityTrustHtml(formatText(localStorage?.getItem('world-location') ?? ''));
+  getCurrentLocation(): string {
+    return localStorage?.getItem('world-location') ?? '';
   }
   clearLocalStorage() {
     localStorage?.clear();

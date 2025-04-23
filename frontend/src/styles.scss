@@ -94,6 +94,11 @@
   }
 }
 
+hr {
+  width: 100%;
+  color: var(--color-9);
+}
+
 html,
 body {
   color: var(--text-color);
@@ -125,7 +130,7 @@ span.CF9 {
   animation-duration: 0.8s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  cursor: pointer;
+  //cursor: pointer;
 }
 
 span.CF0 {
@@ -159,6 +164,7 @@ span.CF9 {
   color: var(--color-9);
 }
 
+/*
 span.CF1:hover {
   animation-name: hover_1;
 }
@@ -186,9 +192,10 @@ span.CF8:hover {
 span.CF9:hover {
   animation-name: hover_9;
 }
+*/
 
 .hover-button {
-  margin: 4px 12px;
+  margin: 6px 12px;
   padding: 6px 12px;
   border: solid 2px var(--border-color);
   outline: none;
@@ -312,44 +319,48 @@ span.CF9:hover {
   color: var(--color-9);
 }
 
-.tooltip {
+.hasTooltip {
   position: relative;
+  display: inline-block;
+  overflow: visible;
   cursor: help;
-  transition: all 0.2s ease-out;
-  border-bottom: solid 1px #3885d2;
 
-  &:hover {
-    box-shadow: 0 0 6px 0 var(--bg-color);
-  }
-  &:before,
-  &:after {
-    position: absolute;
-    left: 50%;
-    opacity: 0;
-    transition: all 0.2s ease-out;
-  }
-  &:before {
-    content: "";
-    margin-left: 32px;
-    top: 32px;
-  }
-  &:after {
-    content: attr(data-tooltip);
-    top: 32px;
-    width: max-content;
-    min-width: 60px;
-    max-width: 480px;
-    margin-left: 32px;
-    padding: 5px;
+  .tooltiptext {
+    visibility: hidden;
     background-color: var(--bg-color);
-    border: solid 1px var(--border-color);
-    border-radius: 5px;
-    pointer-events: none;
+    color: var(--text-color);
+    padding: 5px;
+    border-radius: 6px;
+    font-size: 16px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 100 !important;
+    top: 125%;
+    left: 50%;
+    margin-left: 0px;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+    overflow: visible;
   }
 
-  &:hover:before,
-  &:hover:after {
+  &:hover .tooltiptext {
+    visibility: visible;
     opacity: 1;
+    border: solid 1px var(--border-color);
+    width: max-content;
+    min-width: 45px;
+    display: inline-block;
+    z-index: 100 !important;
+  }
+
+  .tooltip-center {
+    text-align: center;
+  }
+
+  .tooltip-left {
+    text-align: left;
   }
 }
 
@@ -655,8 +666,12 @@ table.datagrid {
   }
 }
 
+.size80 {
+  width: 80px;
+}
+
 .size120 {
-  width: 160px;
+  width: 120px;
 }
 
 .size160 {

@@ -1,0 +1,19 @@
+<div class="container">
+  <ul>
+    @for( option of items() ; track option.Value) {
+    <li>
+      <input
+        type="radio"
+        [id]="option.optionId"
+        name="selector"
+        [value]="option.Value"
+        [checked]="choice() === option.Value"
+        (change)="onChange(option.Value)"
+        title="option"
+      />
+      <label [for]="option.optionId" [innerHTML]="option.Header | safe"></label>
+      <div class="check"></div>
+    </li>
+    }
+  </ul>
+</div>

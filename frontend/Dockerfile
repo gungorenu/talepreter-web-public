@@ -1,8 +1,6 @@
 # Create image based off of the official Node 10 image
 FROM node:23-alpine as builder
 
-ARG API_ENDPOINT=http://localhost:19501
-
 # Copy dependency definitions
 COPY package.json package-lock.json ./
 
@@ -17,7 +15,6 @@ WORKDIR /app
 COPY . /app/
 
 ## Change apiEndpoint in environment.ts
-RUN sh -c "sed -i 's|http://localhost:19501/api|$API_ENDPOINT/api|' src/environments/environment.ts"
 RUN sh -c "sed -i 's|production: false|production: true|' src/environments/environment.ts"
 
 # Build server side bundles

@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr/node';
 import express from 'express';

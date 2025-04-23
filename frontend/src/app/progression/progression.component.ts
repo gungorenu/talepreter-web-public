@@ -1,6 +1,5 @@
 import { Component, Type } from '@angular/core';
 import { TaleVersionSpecificComponent } from '../taleversionspecific';
-import { DomSanitizer } from '@angular/platform-browser';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgComponentOutlet } from '@angular/common';
 import { ChaptersComponent } from './subcomponents/chapters/chapters.component';
@@ -18,8 +17,8 @@ export class ProgressionComponent extends TaleVersionSpecificComponent {
   selectedTab: string = '';
   currentTab?: { component: Type<any> };
   currentGroup: string = '';
-  constructor(doms: DomSanitizer) {
-    super(doms);
+  constructor() {
+    super();
   }
   ngOnInit() {
     super.onInit();

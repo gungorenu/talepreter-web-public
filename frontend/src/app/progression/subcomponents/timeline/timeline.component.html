@@ -8,9 +8,12 @@
     </tr>
     @for( note of notes; track note.Id ){
     <tr>
-      <td [innerHTML]="note.ChapterPage" class="datagrid_ChapterPage"></td>
-      <td [innerHTML]="note.Date"></td>
-      <td [innerHTML]="note.Content"></td>
+      <td
+        [innerHTML]="note.ChapterPage | safe"
+        class="datagrid_ChapterPage"
+      ></td>
+      <td [innerHTML]="note.Date | safe"></td>
+      <td [innerHTML]="note.Content | safe"></td>
     </tr>
     }
   </table>

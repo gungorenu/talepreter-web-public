@@ -1,9 +1,64 @@
-<div>
-  <p>
-    <span class="CF8">TODO:</span>
-    Below is a sample view of what it would look like when implemented. The
-    picture has many expanders nested within each other and there you see a
-    tooltip showing some values. it is taken from Talepreter-WPF.
-  </p>
-  <img alt="sample" src="./anecdote-sample.png" />
+<div class="main">
+  <div class="inputContainer">
+    <div class="float show">
+      <app-radiogroup
+        [(choice)]="loadChoice"
+        [items]="loadChoices"
+      ></app-radiogroup>
+    </div>
+    <div class="float show separator"><span>|</span></div>
+
+    <div class="float" [class]="loadChoice == 0 ? 'show' : ''">
+      <button
+        type="button"
+        id="load"
+        class="hover-button size160"
+        (click)="onLoadRoots()"
+      >
+        Load On Expand
+      </button>
+    </div>
+
+    <div class="float" [class]="loadChoice == 1 ? 'show' : ''">
+      <form [formGroup]="searchForm" (ngSubmit)="onSearchAnecdote()">
+        <label class="inputTextbox">
+          <input type="text" title="pattern" formControlName="searchPattern" />
+        </label>
+        <label class="inputCheckbox">
+          Search In Content
+          <input
+            type="checkbox"
+            title="searchInContent"
+            formControlName="searchInContent"
+          />
+          <span class="checkmark"></span>
+        </label>
+        <label class="inputTextbox">
+          <input
+            type="text"
+            title="searchInChapter"
+            formControlName="searchInChapter"
+            class="size80"
+            restrictNumbers
+          />
+        </label>
+        <div class="float show">
+          <button
+            type="submit"
+            id="search"
+            class="hover-button size160"
+            [style]="{ marginTop: '-1px' }"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div class="rootsContainer">
+    @for( child of roots ; track child._id ){
+    <app-anecdote [roots]="roots" [data]="child"></app-anecdote>
+    }
+  </div>
 </div>

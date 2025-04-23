@@ -134,6 +134,37 @@ export class VersionService {
       );
   }
 
+  getRootAnecdotes(taleId: string, versionId: string) {
+    return this.http.get<any[]>(environment.apiEndpoint + `/version/${taleId}/${versionId}/anecdotes/root`).pipe(
+      map((res: any) => res.data),
+      catchError(this.handleErrorObservable)
+    );
+  }
+
+  expandAnecdote(taleId: string, versionId: string, anecdoteId: string) {
+    return this.http
+      .post<any[]>(environment.apiEndpoint + `/version/${taleId}/${versionId}/anecdotes/expand`, {
+        anecdoteId,
+      })
+      .pipe(
+        map((res: any) => res.data),
+        catchError(this.handleErrorObservable)
+      );
+  }
+
+  searchAnecdotes(taleId: string, versionId: string, searchPattern: string, searchInContent: boolean, searchInChapter: number) {
+    return this.http
+      .post<any[]>(environment.apiEndpoint + `/version/${taleId}/${versionId}/anecdotes/search`, {
+        searchPattern,
+        searchInContent,
+        searchInChapter,
+      })
+      .pipe(
+        map((res: any) => res.data),
+        catchError(this.handleErrorObservable)
+      );
+  }
+
   private handleErrorObservable(error: HttpErrorResponse) {
     console.error('API.Error: ' + error.message);
     return throwError(() => error);

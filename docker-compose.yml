@@ -1,16 +1,13 @@
 services:
-
   svc-web:
-    build:
-      context: frontend
-      args:
-        API_ENDPOINT: ${WEBAPI_ENDPOINT:-http://localhost:19501}
+    build: frontend
     image: ${REGISTRY:-dev.talepreter.io}/svc-web:${TAG:-latest}
     restart: always
     ports:
       - "19401:19401" # specify port forewarding
     environment:
       - PORT=19401
+      - WEBAPI_ENDPOINT=${WEBAPI_ENDPOINT}
 
   svc-web-api:
     build: api

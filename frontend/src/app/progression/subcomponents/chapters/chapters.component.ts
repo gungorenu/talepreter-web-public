@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { TaleVersionSpecificComponent } from '../../../taleversionspecific';
-import { DomSanitizer } from '@angular/platform-browser';
 import { VersionService } from '../../../services/version.service';
 import { Chapter, decorateWorldChapters, WorldChapters } from '../../../../domain/models/world';
+import { SafePipe } from '../../../../library/safe';
 
 @Component({
   selector: 'app-progression-chapters',
   templateUrl: './chapters.component.html',
   styleUrl: './chapters.component.scss',
+  imports: [SafePipe],
 })
 export class ChaptersComponent extends TaleVersionSpecificComponent {
   chapters: Chapter[] = [];
   operationError: string = '';
   hasError: boolean = false;
-  constructor(private versionService: VersionService, doms: DomSanitizer) {
-    super(doms);
+  constructor(private versionService: VersionService) {
+    super();
   }
 
   getChapters(): void {
@@ -35,7 +36,7 @@ export class ChaptersComponent extends TaleVersionSpecificComponent {
 
     this.versionService.getChapters(this.taleId, this.taleVersionId).subscribe({
       next: (data: WorldChapters) => {
-        decorateWorldChapters(data, (s) => this.safeHtml(s));
+        decorateWorldChapters(data);
         var sorted = data.Chapters.sort((a: any, b: any) => (a._id < b._id ? 1 : 0));
         this.chapters = sorted;
         this.hasError = false;

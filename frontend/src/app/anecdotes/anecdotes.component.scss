@@ -1,0 +1,33 @@
+:host {
+  .inputContainer {
+    margin-top: 0px;
+    margin-bottom: 7px;
+  }
+
+  .separator {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    span {
+      font-weight: bold;
+      color: var(--color-9);
+    }
+  }
+
+  .float {
+    vertical-align: middle;
+    display: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: var(--color-1);
+    padding: 0 0;
+  }
+
+  .show {
+    display: inline-block;
+  }
+
+  .rootsContainer {
+    margin-bottom: 60px;
+  }
+}

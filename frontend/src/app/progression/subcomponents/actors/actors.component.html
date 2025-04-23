@@ -1,8 +1,8 @@
 <div>
   <div>
-    <span [innerHTML]="groupChallenge"></span>
+    <span [innerHTML]="groupChallenge | safe"></span>
     <br />
-    <span [innerHTML]="groupCost"></span>
+    <span [innerHTML]="groupCost | safe"></span>
   </div>
   <div>
     @defer {
@@ -18,9 +18,9 @@
         <td>
           <span class="CF2">{{ actor.DocumentId }}</span>
         </td>
-        <td [innerHTML]="actor.ProgressField"></td>
-        <td [innerHTML]="actor.WealthField"></td>
-        <td [innerHTML]="actor.SpecialModifierField"></td>
+        <td [innerHTML]="actor.ProgressField | safe"></td>
+        <td [innerHTML]="actor.WealthField | safe"></td>
+        <td [innerHTML]="actor.SpecialModifierField | safe"></td>
       </tr>
       }
     </table>

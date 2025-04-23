@@ -1,6 +1,5 @@
 import { Component, model, OnChanges, SimpleChanges } from '@angular/core';
 import { TaleVersionSpecificComponent } from '../../taleversionspecific';
-import { DomSanitizer } from '@angular/platform-browser';
 import { VersionService } from '../../services/version.service';
 import { CommonModule } from '@angular/common';
 import {
@@ -11,10 +10,11 @@ import {
   populateGroupActorInventory,
 } from '../../../domain/models/groupactor';
 import { ExpanderComponent } from '../../expander/expander.component';
+import { SafePipe } from '../../../library/safe';
 
 @Component({
   selector: 'app-groupactor',
-  imports: [CommonModule, ExpanderComponent],
+  imports: [CommonModule, ExpanderComponent, SafePipe],
   templateUrl: './groupactor.component.html',
   styleUrl: './groupactor.component.scss',
 })
@@ -24,8 +24,8 @@ export class GroupActorComponent extends TaleVersionSpecificComponent implements
   actorId = model('');
   groupActorProperties: GroupActorProperty[] = [];
   groupActorInventory: GroupActorInventory = new GroupActorInventory('', '');
-  constructor(private versionService: VersionService, doms: DomSanitizer) {
-    super(doms);
+  constructor(private versionService: VersionService) {
+    super();
   }
 
   getGroupActor(): void {
@@ -47,8 +47,8 @@ export class GroupActorComponent extends TaleVersionSpecificComponent implements
     const groupName = this.actorId().replace('Actor:', '');
     this.versionService.getGroupActorDetails(this.taleId, this.taleVersionId, groupName).subscribe({
       next: (data: GroupActor) => {
-        this.groupActorProperties = populateGroupActorProperties(data, (s) => this.safeHtml(s));
-        this.groupActorInventory = populateGroupActorInventory(data, (s) => this.safeHtml(s));
+        this.groupActorProperties = populateGroupActorProperties(data);
+        this.groupActorInventory = populateGroupActorInventory(data);
         this.hasError = false;
       },
       error: (error) => {
