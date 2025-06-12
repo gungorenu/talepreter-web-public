@@ -21,8 +21,11 @@ Project is not complete, Anecdote view is still in progress but it will come soo
 ## Concepts
 
 **Backend**: this is not UI backend. the model (the real data) is processed by multiple services and data is pushed to MongoDB. the data is processed and generated there. it is a bunch of C# services and not part of this repo  
+
 **UI Backend:** this is about a backend for UI, similar to BFF concept. it is "api" folder in repo, nodejs part  
+
 **UI:** the browser UI, the "frontend" folder in repo, angular part  
+
 **WPF UI:** this is a web UI and there is a WPF built UI too (it is the main UI of Talepreter, not this). the main reason why it is main is because of file system limitations. app must access to filesystem directly and it can be done with WPF for now
 
 ## TODO
