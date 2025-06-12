@@ -14,9 +14,7 @@ this project targets second version of Talepreter (first version is here https:/
 
 MEAN stack as much as possible. database is MongoDB which is not part of this project (neither generating data nor model itself).  
 Angular and typescript at frontend, Nodejs/Javascript at backend api.  
-Project lacks some basic functionality but skipped on purpose (like login/register and some issues listed below as TODO, any tests). Project will **not** compile, I stripped code that is relevant to me, mainly the domain of Talepreter and modeling. Talepreter Web is not pure-public.
-
-Project is not complete, Anecdote view is still in progress but it will come soon and TODO below will be completed. for now it is checked in and made public. 
+Project lacks some basic functionality but skipped on purpose (like login/register and some issues listed below as TODO, any tests). Project will **!!not!!** compile, I stripped code that is relevant to me, mainly the domain of Talepreter and modeling. Talepreter Web is not pure-public.
 
 ## Concepts
 
